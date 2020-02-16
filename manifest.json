@@ -1,0 +1,21 @@
+{
+  "name": "PointChin",
+  "description": "Calculate ROI for you",
+  "version": "0.1",
+  "manifest_version": 2,
+  "content_scripts":[
+    {
+      "matches": ["<all_urls>"],
+      "js":["content.js"]
+    }
+  ],
+  "browser_action": {
+    "default_popup": "popup.html",
+    "default_title": "Calculate ROI"
+  },
+  "background": {
+    "scripts": ["session.js"]
+  },
+  "permissions": ["tabs"],
+  "icons": { "16": "calculator-16.png", "128": "calculator-128.png" }
+}
