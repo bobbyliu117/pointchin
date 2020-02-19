@@ -1,0 +1,20 @@
+{
+  "name": "ts1",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:bobbyliu117/pointchin.git",
+  "author": "Chang Liu <chang.liu@moblab.com>",
+  "license": "MIT",
+  "scripts": {
+    "ts-init": "tsc --init",
+    "build": "webpack"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.0.95",
+    "@types/node": "^13.7.2",
+    "ts-loader": "^6.2.1",
+    "typescript": "^3.7.5",
+    "webpack": "^4.41.6",
+    "webpack-cli": "^3.3.11"
+  }
+}

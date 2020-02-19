@@ -6,15 +6,15 @@
   "content_scripts":[
     {
       "matches": ["<all_urls>"],
-      "js":["content.js"]
+      "js":["dist/content.js"]
     }
   ],
   "browser_action": {
-    "default_popup": "popup.html",
+    "default_popup": "static/popup.html",
     "default_title": "Calculate ROI"
   },
   "background": {
-    "scripts": ["session.js"]
+    "scripts": ["dist/background.js"]
   },
   "permissions": ["tabs"],
   "icons": { "16": "calculator-16.png", "128": "calculator-128.png" }
