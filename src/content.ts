@@ -5,6 +5,7 @@ class Content {
   private tax: number = 0;
   private taxAssessment: number = 0;
   private taxYear: string = "2000";
+  private displayData: any = {};
 
   constructor() {
     this.setPrice();
@@ -15,12 +16,19 @@ class Content {
   private setPrice() {
     const tag = document.querySelector('span.ds-value') as HTMLSpanElement;
     this.price = this.toFloat(tag.innerText);
+    this.displayData['price'] = tag.innerText;
   }
 
   private setRent() {
     const tag = document.querySelector('div#ds-rental-home-values p') as HTMLParagraphElement;
-    const text = tag.innerText;
-    this.rent = this.toFloat(text.slice(0, text.length - 3));
+    const text = tag?.innerText;
+    if (text) {
+      this.rent = this.toFloat(text.slice(0, text.length - 3));
+      this.displayData['rent'] = text;
+    } else {
+      this.rent = -1;
+      this.displayData['rent'] = 'No Data';
+    }
   }
 
   private setTax() {
@@ -30,6 +38,9 @@ class Content {
       this.taxYear = tds[0].innerText;
       this.tax = this.toFloat(tds[1].innerText);
       this.taxAssessment = this.toFloat(tds[2].innerText);
+      this.displayData['tax'] = tds[1].innerText;
+      this.displayData['taxYear'] = tds[0].innerText;
+      this.displayData['taxAssessment'] = tds[2].innerText;
     }
   }
 
@@ -38,21 +49,17 @@ class Content {
   }
 
   private calculateROI(): string {
+    if (this.rent < 0) {
+      return 'No Data';
+    }
     const tax = this.price * this.tax / this.taxAssessment;
     const roi = (this.rent * 12 - tax) / this.price;
     return (roi * 100).toFixed(3) + '%';
   }
 
   toJSON(): any {
-    return {
-      price: this.price,
-      rent: this.rent,
-      tax: this.tax,
-      taxYear: this.taxYear,
-      taxAssessment: this.taxAssessment,
-      roi: this.calculateROI(),
-      url: location.href
-    };
+    this.displayData['roi'] = this.calculateROI();
+    return this.displayData;
   }
 }
 
