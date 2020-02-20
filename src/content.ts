@@ -59,6 +59,7 @@ class Content {
 
   toJSON(): any {
     this.displayData['roi'] = this.calculateROI();
+    this.displayData['url'] = location.href;
     return this.displayData;
   }
 }
