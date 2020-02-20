@@ -1,0 +1,22 @@
+ul {
+	margin: 6px 1px;
+	padding: 0px;
+	list-style-type: none;
+}
+
+.list1 {
+	font-family: Arial;
+	padding-bottom: 2px;
+	border-bottom: 1px solid lightgray;
+	margin-bottom: 4px;
+}
+
+.list1 b {
+	color: #252515;
+	float: left;
+}
+
+.list1 p {
+	margin: 0;
+	text-align: end;
+}

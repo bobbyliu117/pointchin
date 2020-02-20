@@ -6,7 +6,13 @@ const tsRule = {
   exclude: /node_modules/
 };
 
+const cssRule = {
+  test: /\.css/,
+  use: ['style-loader', 'css-loader']
+};
+
 module.exports = {
+  mode: 'development',
   entry: {
     content: join(__dirname, 'src/content.ts'),
     background: join(__dirname, 'src/background.ts'),
@@ -18,7 +24,7 @@ module.exports = {
   },
   devtool: 'inline-source-map',
   module: {
-    rules: [tsRule]
+    rules: [tsRule, cssRule]
   },
   resolve: {
     extensions: ['.ts', '.js']
